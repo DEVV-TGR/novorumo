@@ -6,7 +6,7 @@ de Labruge, Vila do Conde. Feito pela DevPlus como proposta.
 São duas páginas:
 
 - **`/`** a página de entrada, com o dia da casa, os pratos, as fotografias da
-  casa, as sobremesas, os gins, os horários e o mapa;
+  casa, as sobremesas, os gins, os horários, o mapa e o pedido de reserva;
 - **`/carta`** a carta completa, em português e inglês, com as dezasseis secções
   do cartaz e os preços que a casa pratica.
 
@@ -29,7 +29,7 @@ mostra.
 | Logótipo e lockup | `src/componentes/Lockup.tsx`, `public/marca/` | Contornos vetoriais da capa, via `pdftocairo -svg`. Não é uma fonte parecida: são as letras da marca. |
 | Fundo da capa e da contracapa | `public/fundos/` | A textura low-poly de 1152x1152 embutida no PDF. A contracapa é a mesma, rodada. |
 | Fotografias da carta | `public/fotos/` | As sobremesas e os botânicos dos gins, recompostos com a máscara de transparência que no PDF vem à parte. |
-| Fotografias da casa | `public/fotos/casa/`, `src/dados/fotos.ts` | Capturas de ecrã do Instagram da casa (`originais/fotos-instagram/`), com a interface do Instagram cortada. São os pratos, a esplanada e a sala — o que a carta impressa não tem. |
+| Fotografias da casa | `public/fotos/casa/`, `src/dados/fotos.ts` | Capturas de ecrã do Instagram da casa (`originais/fotos-instagram/`), com a interface do Instagram cortada. São os pratos, a esplanada e a sala — o que a carta impressa não tem. Cada uma leva título e legenda, em português e inglês, como os cartões das sobremesas. |
 | Cores | `src/app/globals.css` | Os valores contados nos vetores do PDF: navy `#352D74`, ciano `#008DD2`, tinta `#1C1B17`, creme `#EAF4EB`, laranja dos selos de preço `#EF7F1A`. |
 | Carta | `src/dados/` | Transcrita do PDF. As páginas dos gins tinham o texto em curvas e foram passadas à mão. |
 

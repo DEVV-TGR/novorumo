@@ -65,6 +65,13 @@
     --marca-viva: var(--color-ciano-claro);
     --acento: #ff9a3d;
     --cartao: #201c47;
+    /*
+      Em modo escuro o navy da marca fica quase da cor do fundo e os blocos
+      pintados com ele deixam de se ver como blocos. Sobe um degrau, como
+      qualquer superfície elevada sobe no escuro, e continua a dar 9:1 contra
+      o texto branco que leva por cima.
+    */
+    --sup-marca: #453a94;
   }
 }
 
@@ -103,6 +110,32 @@ body {
     1.15rem 100%,
     0 50%
   );
+}
+
+/*
+  Escala de título.
+
+  O tamanho não muda em degraus a cada breakpoint: cresce com o ecrã, com
+  `clamp`, para não haver larguras em que o título fica desproporcionado. E não
+  cresce sozinho: à medida que aumenta, as letras juntam-se e as linhas
+  apertam-se, senão um título grande lê-se como letras espalhadas.
+*/
+.display-1 {
+  font-size: clamp(2.125rem, 7.4vw, 3.75rem);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+}
+
+.display-2 {
+  font-size: clamp(1.625rem, 5vw, 2.5rem);
+  line-height: 1.12;
+  letter-spacing: -0.022em;
+}
+
+.display-3 {
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
 }
 
 /* Os números da carta alinham em coluna, como numa conta. */

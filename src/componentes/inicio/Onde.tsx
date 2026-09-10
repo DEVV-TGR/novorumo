@@ -12,11 +12,11 @@ export function Onde() {
   const consulta = encodeURIComponent(`${site.nome}, ${site.morada.completa}`);
 
   return (
-    <section id="onde" className="scroll-mt-20 py-20 sm:py-28">
+    <section id="onde" className="scroll-mt-20 py-16 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-center lg:gap-16">
           <Revelar>
-            <h2 className="max-w-[16ch] font-display text-3xl font-semibold leading-tight text-marca sm:text-4xl">
+            <h2 className="display-2 max-w-[16ch] font-display font-semibold text-marca">
               À beira da marginal, em frente à praia.
             </h2>
             <address className="mt-6 not-italic leading-relaxed text-texto-suave">

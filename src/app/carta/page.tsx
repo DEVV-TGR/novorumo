@@ -18,7 +18,7 @@ export default function PaginaCarta() {
       <main>
         <div className="border-b border-linha bg-fundo-alt">
           <div className="mx-auto max-w-4xl px-4 pt-14 pb-10 sm:px-6">
-            <h1 className="font-display text-4xl font-semibold text-marca sm:text-5xl">
+            <h1 className="display-1 font-display font-semibold text-marca">
               Carta
             </h1>
             <p className="mt-3 max-w-[52ch] leading-relaxed text-texto-suave">

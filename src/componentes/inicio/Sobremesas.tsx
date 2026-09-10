@@ -26,7 +26,7 @@ export function Sobremesas() {
     <section className="bg-sup-marca py-20 text-white sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Revelar>
-          <h2 className="max-w-[22ch] font-display text-3xl font-semibold leading-tight sm:text-4xl">
+          <h2 className="display-2 max-w-[22ch] font-display font-semibold">
             As sobremesas saem da cozinha ao lado da máquina de gelados.
           </h2>
         </Revelar>

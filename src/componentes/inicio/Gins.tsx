@@ -14,7 +14,7 @@ export function Gins() {
   const primeiros = gins.itens.slice(0, 4);
 
   return (
-    <section className="py-20 sm:py-28">
+    <section className="py-16 sm:py-24 lg:py-28">
       <div className="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-16">
         <Revelar className="order-2 lg:order-1">
           <div className="relative aspect-[3/4] overflow-hidden rounded-[14px] bg-fundo-alt">
@@ -30,7 +30,7 @@ export function Gins() {
 
         <div className="order-1 lg:order-2">
           <Revelar>
-            <h2 className="max-w-[20ch] font-display text-3xl font-semibold leading-tight text-marca sm:text-4xl">
+            <h2 className="display-2 max-w-[20ch] font-display font-semibold text-marca">
               Dez gins, cada um com o seu botânico.
             </h2>
             <p className="mt-4 max-w-[48ch] leading-relaxed text-texto-suave">

@@ -59,10 +59,10 @@ const tons = {
 
 export function Destaques() {
   return (
-    <section className="py-20 sm:py-28">
+    <section className="py-16 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Revelar className="flex flex-col items-start gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
-          <h2 className="max-w-[18ch] font-display text-3xl font-semibold leading-tight text-marca sm:text-4xl">
+          <h2 className="display-2 max-w-[18ch] font-display font-semibold text-marca">
             O que sai mais vezes da cozinha.
           </h2>
           <Link
@@ -81,8 +81,8 @@ export function Destaques() {
               className={`h-full ${i === 0 ? "md:col-span-2 md:row-span-2" : i === 4 ? "md:col-span-2" : ""}`}
             >
               <article
-                className={`relative flex h-full flex-col justify-between overflow-hidden rounded-[14px] p-7 ${tons[p.tom].caixa} ${
-                  i === 0 ? "min-h-[18rem] md:p-10" : "min-h-[11rem]"
+                className={`relative flex h-full flex-col justify-between overflow-hidden rounded-[14px] p-5 sm:p-7 ${tons[p.tom].caixa} ${
+                  i === 0 ? "min-h-[16rem] sm:min-h-[18rem] md:p-10" : "min-h-[10rem] sm:min-h-[11rem]"
                 }`}
               >
                 {i === 0 && (

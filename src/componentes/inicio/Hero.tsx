@@ -51,12 +51,12 @@ export function Hero() {
             >
               Ver a carta
             </Link>
-            <a
-              href={`tel:${site.telemovelE164}`}
+            <Link
+              href="/#reservar"
               className="rounded-full border border-white/60 bg-white/10 px-7 py-3.5 font-display font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/20 active:scale-[0.98]"
             >
-              Reservar
-            </a>
+              Reservar mesa
+            </Link>
           </div>
         </div>
 

@@ -44,12 +44,17 @@ export function Nav() {
             ))}
           </ul>
 
-          <a
-            href={`tel:${site.telemovelE164}`}
+          {/*
+            Levava ao marcador do telefone, que num computador de secretária não
+            faz nada. Leva agora ao formulário, que já traz o número à vista
+            para quem prefira falar com alguém.
+          */}
+          <Link
+            href="/#reservar"
             className="hidden rounded-full bg-acento px-5 py-2 text-sm font-semibold text-tinta transition-transform duration-150 hover:brightness-105 active:scale-[0.97] sm:block"
           >
             Reservar
-          </a>
+          </Link>
 
           <MenuMovel />
         </div>

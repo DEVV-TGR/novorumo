@@ -51,6 +51,11 @@ const secoes = [
     texto: "Onde estamos",
     nota: "Rua da Marginal, à beira da praia",
   },
+  {
+    href: "/#reservar",
+    texto: "Reservar",
+    nota: "Mesa para almoçar ou jantar",
+  },
 ];
 
 export function MenuMovel() {
@@ -178,7 +183,9 @@ export function MenuMovel() {
                       className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-acento px-5 py-3.5 font-display font-semibold text-tinta transition-transform active:scale-[0.97]"
                     >
                       <Phone size={18} weight="fill" />
-                      Reservar
+                      {/* Era "Reservar", que agora é o link da folha. Com o
+                          ícone do telefone ao lado, "Ligar" diz o que faz. */}
+                      Ligar
                     </a>
                     <a
                       href={site.whatsapp}

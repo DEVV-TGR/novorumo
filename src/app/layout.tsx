@@ -71,6 +71,9 @@ function dadosEstruturados() {
     email: site.email,
     servesCuisine: ["Portuguesa", "Pizza"],
     priceRange: "€€",
+    // A casa aceita reservas, e é daqui que sai o indicador na ficha do Google.
+    // A marcação em si continua a passar por uma pessoa.
+    acceptsReservations: true,
     foundingDate: String(site.desde),
     address: {
       "@type": "PostalAddress",

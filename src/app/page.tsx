@@ -7,6 +7,7 @@ import { Sobremesas } from "@/componentes/inicio/Sobremesas";
 import { Gins } from "@/componentes/inicio/Gins";
 import { Horarios } from "@/componentes/inicio/Horarios";
 import { Onde } from "@/componentes/inicio/Onde";
+import { Reservar } from "@/componentes/inicio/Reservar";
 import { Rodape } from "@/componentes/Rodape";
 
 export default function Pagina() {
@@ -22,6 +23,7 @@ export default function Pagina() {
         <Gins />
         <Horarios />
         <Onde />
+        <Reservar />
       </main>
       <Rodape />
     </>

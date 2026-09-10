@@ -74,6 +74,14 @@ export function Rodape() {
                 <br />
                 {site.morada.codigoPostal} {site.morada.localidade}
               </li>
+              <li className="pt-2">
+                <Link
+                  href="/#reservar"
+                  className="underline underline-offset-4 hover:text-white/80"
+                >
+                  Reservar mesa
+                </Link>
+              </li>
             </ul>
 
             <ul className="mt-6 flex gap-3">

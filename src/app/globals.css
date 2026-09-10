@@ -1,26 +1,122 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+  Paleta do Novo Rumo.
+
+  Nenhum destes valores foi inventado: saíram todos dos vetores da carta
+  impressa, lidos com `pdftocairo -svg` e contados por frequência. O ciano é o
+  fundo da capa, o navy é a cor das faixas de título, a tinta é o preto quente
+  do texto corrido e o creme é o fundo das páginas dos gins. O laranja é o dos
+  selos de preço das sobremesas, e é o único acento do site.
+*/
+
+@theme {
+  --color-navy: #352d74;
+  --color-navy-claro: #2f3f8c;
+  --color-ciano: #008dd2;
+  --color-ciano-claro: #00ccff;
+  --color-tinta: #1c1b17;
+  --color-creme: #eaf4eb;
+  --color-papel: #f7faf7;
+  --color-sol: #ef7f1a;
+
+  --font-display: var(--fonte-display), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--fonte-corpo), ui-sans-serif, system-ui, sans-serif;
+
+  /* Um só sistema de cantos: pastilha nos botões, 14px nos cards, 10px nos campos. */
+  --radius-card: 14px;
+  --radius-campo: 10px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/*
+  Tokens semânticos. O site é claro por omissão, com o azul reservado à capa e
+  ao fecho, tal como a carta impressa: capa azul, miolo em papel, contracapa
+  azul. Em modo escuro o papel dá lugar ao navy e o azul da marca mantém-se.
+*/
+:root {
+  --fundo: var(--color-papel);
+  --fundo-alt: var(--color-creme);
+  --texto: var(--color-tinta);
+  --texto-suave: color-mix(in oklab, var(--color-tinta) 62%, transparent);
+  --linha: color-mix(in oklab, var(--color-navy) 14%, transparent);
+  --marca: var(--color-navy);
+  --marca-viva: var(--color-ciano);
+  /*
+    As superfícies de marca não acompanham o modo escuro.
+    `--marca` e `--marca-viva` são cores de texto e clareiam no escuro para
+    continuarem a ler-se sobre o navy. Um bloco pintado com a cor da marca e
+    escrito a branco tem de ficar escuro nos dois modos, senão em modo escuro
+    seria branco sobre azul claro. São, por isso, dois tokens diferentes.
+  */
+  --sup-marca: var(--color-navy);
+  --sup-viva: var(--color-ciano);
+  --acento: var(--color-sol);
+  --cartao: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --fundo: #14122e;
+    --fundo-alt: #1a1738;
+    --texto: #eef1f6;
+    --texto-suave: color-mix(in oklab, #eef1f6 66%, transparent);
+    --linha: color-mix(in oklab, #ffffff 16%, transparent);
+    --marca: #b9c2f2;
+    --marca-viva: var(--color-ciano-claro);
+    --acento: #ff9a3d;
+    --cartao: #201c47;
   }
 }
 
+@theme inline {
+  --color-fundo: var(--fundo);
+  --color-fundo-alt: var(--fundo-alt);
+  --color-texto: var(--texto);
+  --color-texto-suave: var(--texto-suave);
+  --color-linha: var(--linha);
+  --color-marca: var(--marca);
+  --color-marca-viva: var(--marca-viva);
+  --color-sup-marca: var(--sup-marca);
+  --color-sup-viva: var(--sup-viva);
+  --color-acento: var(--acento);
+  --color-cartao: var(--cartao);
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/*
+  A faixa de título com as pontas em losango é a assinatura gráfica da carta
+  impressa. Está aqui em clip-path para não ser uma imagem: acompanha o texto,
+  aceita qualquer cor e não pesa nada.
+*/
+.faixa {
+  clip-path: polygon(
+    1.15rem 0,
+    calc(100% - 1.15rem) 0,
+    100% 50%,
+    calc(100% - 1.15rem) 100%,
+    1.15rem 100%,
+    0 50%
+  );
+}
+
+/* Os números da carta alinham em coluna, como numa conta. */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

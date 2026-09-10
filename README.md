@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Novo Rumo
 
-## Getting Started
+Site de demonstração para o **Novo Rumo**, restaurante, bar e pizzaria na praia
+de Labruge, Vila do Conde. Feito pela DevPlus como proposta.
 
-First, run the development server:
+São duas páginas:
+
+- **`/`** a página de entrada, com o dia da casa, os pratos, as sobremesas, os
+  gins, os horários e o mapa;
+- **`/carta`** a carta completa, em português e inglês, com as dezasseis secções
+  do cartaz e os preços que a casa pratica.
+
+## Correr
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## De onde vem tudo isto
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+A casa não tem site nem manual de marca. O único material que existe é a carta
+impressa, um PDF de treze páginas feito em CorelDRAW, e é dela que sai tudo o
+que este site mostra. O ficheiro está em `originais/CartaNovoRumo.pdf` e é a
+fonte de verdade.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| O quê | Onde está | Como foi tirado |
+| --- | --- | --- |
+| Logótipo e lockup | `src/componentes/Lockup.tsx`, `public/marca/` | Contornos vetoriais da capa, via `pdftocairo -svg`. Não é uma fonte parecida: são as letras da marca. |
+| Fundo da capa e da contracapa | `public/fundos/` | A textura low-poly de 1152x1152 embutida no PDF. A contracapa é a mesma, rodada. |
+| Fotografias | `public/fotos/` | As sobremesas e os botânicos dos gins, recompostos com a máscara de transparência que no PDF vem à parte. |
+| Cores | `src/app/globals.css` | Os valores contados nos vetores do PDF: navy `#352D74`, ciano `#008DD2`, tinta `#1C1B17`, creme `#EAF4EB`, laranja dos selos de preço `#EF7F1A`. |
+| Carta | `src/dados/` | Transcrita do PDF. As páginas dos gins tinham o texto em curvas e foram passadas à mão. |
 
-## Learn More
+Para voltar a extrair os fundos e as fotos:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+brew install poppler   # uma vez
+node scripts/extrair-da-carta.mjs
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## O que ainda falta
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Antes disto ir para o ar há coisas que só a casa pode responder:
 
-## Deploy on Vercel
+- **Fotografias dos pratos principais.** A carta impressa não tem uma única
+  foto de comida salgada. As células dos destaques estão pintadas com a cor da
+  marca à espera delas.
+- **Logótipo vetorial original e códigos de cor oficiais.** Os que aqui estão
+  foram lidos do PDF e batem certo, mas convém confirmar com quem os desenhou.
+- **Alergénios.** O modelo suporta-os e há alguns preenchidos, mas foram
+  inferidos dos ingredientes e não confirmados pela cozinha. Por isso não
+  aparecem no site: em vez disso a carta pede que se avise antes de pedir.
+- **Horário de verão.** O de julho e agosto vem da carta de 2024 e do Facebook.
+  Confirmar se se mantém.
+- **A morada.** O Restaurantji lista "R. da Marginal 420" e a carta diz 820. O
+  site usa a da carta. Enquanto os dois números andarem pela internet, a casa
+  aparece pior nas pesquisas.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Feito com
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Next.js 16, React 19, Tailwind CSS 4, TypeScript, Motion e Phosphor Icons.

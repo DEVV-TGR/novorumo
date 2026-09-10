@@ -62,7 +62,8 @@ export function Sobremesas() {
           </figure>
         </Revelar>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Duas colunas, como no mosaico das fotografias da casa. */}
+        <div className="mt-12 grid gap-5 sm:grid-cols-2">
           {itens.map((item, i) => (
             <Revelar key={item.id} atraso={i * 0.05} className="h-full">
               <article className="h-full overflow-hidden rounded-[14px] bg-white/10 backdrop-blur-sm">
@@ -71,7 +72,7 @@ export function Sobremesas() {
                     src={`${item.foto}.webp`}
                     alt={texto(item.nome, "pt")}
                     fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 36rem"
                     className="object-contain p-3"
                   />
                 </div>

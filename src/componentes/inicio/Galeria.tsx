@@ -18,8 +18,8 @@ import { Revelar } from "../Revelar";
  * baixo — e a grelha é regular, com as filas alinhadas. A primeira versão
  * disto era um mosaico em colunas, com cada foto no seu feitio: ficava bonito
  * e lia-se mal, porque nada acabava à mesma altura e não havia por onde
- * começar. Aqui as fotos vêm em dois grupos com título, e cada grupo enche as
- * filas: seis e três, em três colunas.
+ * começar. Aqui as fotos vêm em dois grupos com título, seis e três, em duas
+ * colunas.
  *
  * As que faltam estão noutro sítio, e não se repetem: a francesinha e os
  * hambúrgueres nos destaques, a esplanada ao pé do mapa e a sobremesa na
@@ -69,9 +69,27 @@ export function Galeria() {
                 </h3>
               </Revelar>
 
-              <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                {escolhidas.map((f, i) => (
-                  <Revelar key={f.id} atraso={(i % 3) * 0.05} className="h-full">
+              {/*
+                Duas colunas e não três. Em três, cada fotografia ficava com
+                380 px de largura num portátil, e uma travessa de petiscos com
+                doze coisas em cima não se vê a 380 px. Em duas, a mesma foto
+                fica com 590 e passa a distinguir-se o que lá está.
+              */}
+              <div className="mt-6 grid gap-5 sm:grid-cols-2">
+                {escolhidas.map((f, i) => {
+                  /*
+                    Num grupo com um número ímpar de fotografias, a última
+                    ficava sozinha com meia fila vazia ao lado. Passa a ocupar
+                    a fila inteira, mais baixa e mais larga, e a fila fecha.
+                  */
+                  const largo = escolhidas.length % 2 === 1 && i === escolhidas.length - 1;
+
+                  return (
+                  <Revelar
+                    key={f.id}
+                    atraso={(i % 2) * 0.05}
+                    className={`h-full ${largo ? "sm:col-span-2" : ""}`}
+                  >
                     <figure className="h-full overflow-hidden rounded-[14px] border border-linha bg-cartao">
                       {/*
                         Todas as caixas com a mesma proporção, e a fotografia a
@@ -79,12 +97,16 @@ export function Galeria() {
                         formato de cada foto, umas ficavam mais altas do que as
                         outras e a fila deixava de ser uma fila.
                       */}
-                      <div className="relative aspect-[4/3]">
+                      <div className={`relative ${largo ? "aspect-[2/1]" : "aspect-[4/3]"}`}>
                         <Image
                           src={f.src}
                           alt={texto(f.legenda, "pt")}
                           fill
-                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          sizes={
+                            largo
+                              ? "(max-width: 1200px) 100vw, 72rem"
+                              : "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 36rem"
+                          }
                           style={f.foco ? { objectPosition: f.foco } : undefined}
                           className="object-cover"
                         />
@@ -99,7 +121,8 @@ export function Galeria() {
                       </figcaption>
                     </figure>
                   </Revelar>
-                ))}
+                  );
+                })}
               </div>
             </div>
           );

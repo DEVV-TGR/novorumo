@@ -80,6 +80,9 @@ export const fotos: Foto[] = [
       en: "With toasted bread, at a terrace table",
     },
     formato: "vertical",
+    // Fecha o grupo dos petiscos num cartão de fila inteira, e nessa caixa
+    // larga o meio da fotografia é a mesa: o prato está no terço de baixo.
+    foco: "center 82%",
   },
   {
     id: "mesa-de-petiscos",

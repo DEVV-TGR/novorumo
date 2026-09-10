@@ -56,12 +56,12 @@ export function Horarios() {
   const hoje = new Date().getDay();
 
   return (
-    <section id="horarios" className="scroll-mt-20 bg-fundo-alt py-20 sm:py-28">
+    <section id="horarios" className="scroll-mt-20 bg-fundo-alt py-16 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Revelar>
           <Faixa cor="viva">Horários</Faixa>
           <div className="mt-6 flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between sm:gap-4">
-            <h2 className="font-display text-3xl font-semibold text-marca sm:text-4xl">
+            <h2 className="display-2 font-display font-semibold text-marca">
               Quando estamos abertos.
             </h2>
             <Estado compacto />
@@ -70,7 +70,7 @@ export function Horarios() {
 
         <div className="mt-10 grid gap-8 lg:grid-cols-2 lg:gap-14">
           <Revelar>
-            <div className="rounded-[14px] bg-cartao p-6 sm:p-8">
+            <div className="rounded-[14px] bg-cartao p-5 sm:p-8">
               <h3 className="font-display text-lg font-semibold text-texto">
                 De setembro a junho
               </h3>
@@ -82,7 +82,7 @@ export function Horarios() {
           </Revelar>
 
           <Revelar atraso={0.08}>
-            <div className="rounded-[14px] border border-marca-viva/30 bg-cartao p-6 sm:p-8">
+            <div className="rounded-[14px] border border-marca-viva/30 bg-cartao p-5 sm:p-8">
               <h3 className="font-display text-lg font-semibold text-texto">
                 Julho e agosto
               </h3>

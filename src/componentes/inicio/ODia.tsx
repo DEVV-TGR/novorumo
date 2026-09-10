@@ -33,11 +33,11 @@ const momentos = [
 
 export function ODia() {
   return (
-    <section className="bg-fundo-alt py-20 sm:py-28">
+    <section className="bg-fundo-alt py-16 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Revelar>
           <Faixa>Do café ao pôr do sol</Faixa>
-          <h2 className="mt-6 max-w-[20ch] font-display text-3xl font-semibold leading-tight text-marca sm:text-4xl">
+          <h2 className="display-2 mt-6 max-w-[20ch] font-display font-semibold text-marca">
             Catorze horas abertos, e cada uma sabe a coisa diferente.
           </h2>
         </Revelar>
@@ -45,7 +45,7 @@ export function ODia() {
         <ol className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {momentos.map((m, i) => (
             <Revelar key={m.hora} atraso={i * 0.07} className="h-full">
-              <li className="h-full rounded-[14px] border border-linha bg-cartao p-7">
+              <li className="h-full rounded-[14px] border border-linha bg-cartao p-5 sm:p-7">
                 <span className="tabular font-display text-3xl font-semibold text-marca-viva">
                   {m.hora}
                 </span>

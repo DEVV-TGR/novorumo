@@ -34,9 +34,9 @@ export function Hero() {
 
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-4 pt-16 pb-16 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-end lg:gap-16">
         <div>
-          <Lockup className="h-auto w-56 text-white sm:w-72" />
+          <Lockup className="h-auto w-[min(58vw,15rem)] text-white sm:w-72" />
 
-          <h1 className="mt-8 max-w-[16ch] font-display text-4xl font-semibold leading-[1.05] text-white md:text-5xl lg:text-6xl">
+          <h1 className="display-1 mt-7 max-w-[16ch] font-display font-semibold text-white">
             Na praia de Labruge desde 2010.
           </h1>
 
@@ -44,7 +44,7 @@ export function Hero() {
             Pequeno-almoço às nove, cozinha ao meio-dia, gins ao pôr do sol.
           </p>
 
-          <div className="mt-9 flex flex-wrap items-center gap-3">
+          <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link
               href="/carta"
               className="rounded-full bg-white px-7 py-3.5 font-display font-semibold text-navy transition-transform hover:bg-white/90 active:scale-[0.98]"
@@ -61,7 +61,7 @@ export function Hero() {
         </div>
 
         {/* O que uma pessoa quer mesmo saber antes de meter o carro a andar. */}
-        <div className="rounded-[14px] border border-white/25 bg-white/12 p-6 text-white backdrop-blur-md sm:p-7">
+        <div className="rounded-[14px] border border-white/25 bg-white/12 p-5 text-white backdrop-blur-md sm:p-7">
           <p className="font-display text-lg font-semibold">Hoje</p>
           <div className="mt-3 [&_*]:!text-white/90 [&_strong]:!text-white">
             <Estado />

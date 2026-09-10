@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Pasta temporária do scripts/extrair-da-carta.mjs
+.assets-temp/
+
+# Worktrees de outras sessões
+.claude/

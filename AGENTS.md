@@ -27,15 +27,24 @@ Cada nome e cada descrição têm `pt` e `en`. Metade do argumento desta propost
 que o turista de agosto consiga ler a carta. Um item novo sem tradução é um item
 por acabar.
 
-## Os assets vêm do PDF
+## Os assets vêm da casa
 
-O logótipo, os fundos e as fotos saem todos da carta impressa pelo
-`scripts/extrair-da-carta.mjs`. Não se desenha um "+" parecido nem se vai buscar
-uma textura semelhante a um banco de imagens: se é preciso um asset novo, ou sai
-do PDF ou pede-se à casa.
+O logótipo, os fundos e as fotos das sobremesas saem da carta impressa pelo
+`scripts/extrair-da-carta.mjs`. As fotos dos pratos, da esplanada e da sala saem
+do Instagram da casa pelo `scripts/preparar-fotos-instagram.mjs`. Não se desenha
+um "+" parecido nem se vai buscar uma textura semelhante a um banco de imagens:
+se é preciso um asset novo, ou sai de um destes dois sítios ou pede-se à casa.
 
 **Não se usam fotografias de banco para os pratos.** Onde não há foto real, a
 célula leva cor da marca e fica assinalado no README.
+
+**E uma foto real só ganha o nome de um prato quando a casa o confirma.** A
+fotografia de uma francesinha não diz qual das francesinhas da carta é: as
+legendas em `src/dados/fotos.ts` descrevem o que se vê e não citam a carta.
+Colar a foto errada a um preço é a mesma mentira que mudar o preço.
+
+**Ninguém vai para o site sem dar licença.** As capturas em que há clientes de
+cara levantada ficam em `originais/` e não entram em `public/`.
 
 ## Cores
 

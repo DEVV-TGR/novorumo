@@ -2,6 +2,7 @@ import { Nav } from "@/componentes/Nav";
 import { Hero } from "@/componentes/inicio/Hero";
 import { ODia } from "@/componentes/inicio/ODia";
 import { Destaques } from "@/componentes/inicio/Destaques";
+import { Galeria } from "@/componentes/inicio/Galeria";
 import { Sobremesas } from "@/componentes/inicio/Sobremesas";
 import { Gins } from "@/componentes/inicio/Gins";
 import { Horarios } from "@/componentes/inicio/Horarios";
@@ -16,6 +17,7 @@ export default function Pagina() {
         <Hero />
         <ODia />
         <Destaques />
+        <Galeria />
         <Sobremesas />
         <Gins />
         <Horarios />

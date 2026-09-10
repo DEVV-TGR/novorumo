@@ -1,5 +1,8 @@
+import Image from "next/image";
 import { Phone, WhatsappLogo, NavigationArrow } from "@phosphor-icons/react/dist/ssr";
 import { site } from "@/lib/site";
+import { texto } from "@/lib/carta";
+import { foto } from "@/dados/fotos";
 import { Revelar } from "../Revelar";
 
 /**
@@ -7,9 +10,14 @@ import { Revelar } from "../Revelar";
  *
  * A morada aparece com dois números diferentes espalhados pela internet, o que
  * é mau para quem procura e pior para o Google. A do site é a da carta.
+ *
+ * O mapa diz onde é, a fotografia diz o que se encontra lá: um mapa sozinho
+ * não distingue esta casa das outras três que há na marginal, e o letreiro no
+ * fundo da esplanada é o que uma pessoa vai reconhecer quando lá chegar.
  */
 export function Onde() {
   const consulta = encodeURIComponent(`${site.nome}, ${site.morada.completa}`);
+  const esplanada = foto("esplanada-com-letreiro");
 
   return (
     <section id="onde" className="scroll-mt-20 py-16 sm:py-24 lg:py-28">
@@ -64,6 +72,19 @@ export function Onde() {
                 className="h-[22rem] w-full border-0 sm:h-[26rem]"
               />
             </div>
+
+            <figure className="mt-4 overflow-hidden rounded-[14px] border border-linha">
+              <div className="relative aspect-[16/9]">
+                <Image
+                  src={esplanada.src}
+                  alt={texto(esplanada.legenda, "pt")}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 55vw"
+                  style={esplanada.foco ? { objectPosition: esplanada.foco } : undefined}
+                  className="object-cover"
+                />
+              </div>
+            </figure>
           </Revelar>
         </div>
       </div>

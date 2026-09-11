@@ -10,14 +10,21 @@ import { RosaDosVentos } from "../RosaDosVentos";
  *
  * A carta impressa não tem uma única fotografia dos pratos principais: as
  * únicas fotos que existem lá são as das sobremesas e as dos gins. As que aqui
- * estão vieram do Instagram da casa, e mesmo assim só duas células as levam.
+ * estão vieram do Instagram da casa.
  *
- * O critério é o de sempre: não se afirma o que não se sabe. Uma francesinha
- * na fotografia é uma francesinha, e um hambúrguer é um hambúrguer — o que a
- * fotografia não diz é qual das francesinhas da carta é aquela, e por isso a
- * legenda descreve e não nomeia. A pizza que temos fotografada leva salmão
- * fumado, que não é a Pizza Novo Rumo, e essa célula fica com a cor da marca
- * até a casa mandar a foto certa. O mesmo para o pica-pau e para a sangria.
+ * Duas são do prato: a francesinha é uma francesinha e o hambúrguer é um
+ * hambúrguer — o que a fotografia não diz é qual dos da carta é aquele, e por
+ * isso a legenda descreve e não nomeia. As outras três são **provisórias**,
+ * marcadas como tal em `provisoria`: a pizza fotografada leva salmão fumado e
+ * a Pizza Novo Rumo leva gambas; a travessa de petiscos parece um pica-pau
+ * mas não se sabe se é; e a sangria não está fotografada, leva a esplanada
+ * onde se bebe. Estão aqui para se ver como a secção fica com fotografia em
+ * todas as células, e saem no dia em que a casa mandar as certas. Enquanto
+ * cá estiverem, o texto alternativo descreve o que se vê e não o prato.
+ *
+ * O cartão é o das sobremesas: fotografia inteira em cima, o preço numa
+ * pastilha no canto dela, nome e uma linha por baixo. A fotografia é a razão
+ * de o cartão existir, por isso é ela que fica com a altura toda que sobra.
  */
 const pratos = [
   {
@@ -34,18 +41,24 @@ const pratos = [
     descricao: "Miolo de gambas, mozzarella, atum e delícias do mar.",
     preco: 17.5,
     tom: "ciano",
+    foto: "pizza-salmao",
+    provisoria: true,
   },
   {
     nome: "Pica-pau à Novo Rumo",
     descricao: "A tapa que sai mais vezes para a esplanada.",
     preco: 11.5,
     tom: "papel",
+    foto: "tabua-de-petiscos",
+    provisoria: true,
   },
   {
     nome: "Sangria de maracujá",
     descricao: "Jarro de litro e meio, para a mesa toda.",
     preco: 22,
     tom: "acento",
+    foto: "esplanada-com-letreiro",
+    provisoria: true,
   },
   {
     nome: "Hambúrguer à Novo Rumo",
@@ -57,8 +70,9 @@ const pratos = [
 ] as const;
 
 /**
- * Cada tom traz o seu par de cores já verificado em contraste. O ciano e o
- * laranja da marca pedem texto escuro; o navy pede branco.
+ * Para as células sem fotografia, se alguma voltar a ficar sem ela. Cada tom
+ * traz o seu par de cores já verificado em contraste: o ciano e o laranja da
+ * marca pedem texto escuro, o navy pede branco.
  */
 const tons = {
   principal: { caixa: "bg-sup-marca text-white", corpo: "text-white/85" },
@@ -83,85 +97,121 @@ export function Destaques() {
           </Link>
         </Revelar>
 
-        <div className="mt-8 grid gap-4 sm:mt-12 md:grid-cols-3">
+        {/*
+          Duas colunas no telemóvel e três a partir de `md:`. A francesinha
+          ocupa a fila inteira no telemóvel e um quadrado de dois por dois no
+          computador; o hambúrguer ocupa duas colunas só no computador. Dá
+          três filas cheias no telemóvel e o mosaico de sempre no resto.
+        */}
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-4 md:grid-cols-3">
           {pratos.map((p, i) => {
             const imagem = "foto" in p && p.foto ? foto(p.foto) : null;
             const grande = i === 0;
+            const largo = i === 4;
 
             return (
               <Revelar
                 key={p.nome}
                 atraso={i * 0.06}
-                className={`h-full ${grande ? "md:col-span-2 md:row-span-2" : i === 4 ? "md:col-span-2" : ""}`}
+                className={`h-full ${grande ? "col-span-2 md:row-span-2" : largo ? "md:col-span-2" : ""}`}
               >
                 <article
                   className={`relative flex h-full flex-col overflow-hidden rounded-[14px] ${
-                    imagem ? "bg-sup-marca text-white" : `justify-between ${tons[p.tom].caixa}`
-                  } ${
-                    imagem ? "" : grande ? "p-5 sm:p-7 md:p-10" : "p-5 sm:p-7"
-                  } ${grande ? "min-h-[16rem] sm:min-h-[18rem]" : "min-h-[10rem] sm:min-h-[11rem]"}`}
+                    imagem
+                      ? "bg-sup-marca text-white"
+                      : `justify-between p-5 sm:p-7 ${grande ? "md:p-10" : ""} ${tons[p.tom].caixa}`
+                  } ${grande ? "min-h-[16rem] sm:min-h-[18rem]" : "min-h-[10rem]"}`}
                 >
-                  {/*
-                    Com fotografia o texto não vai por cima dela. Um véu escuro
-                    que chegue para o branco passar em AA é um véu que tapa a
-                    comida, e a comida é a razão de a fotografia aqui estar.
-                    Fica em cima, inteira, e o texto por baixo em navy — como
-                    já acontece nos cartões das sobremesas.
+                  {imagem ? (
+                    <>
+                      {/*
+                        A fotografia leva a altura toda que sobra. As células
+                        pequenas partem de uma proporção fixa e, no computador,
+                        crescem (`grow`) até à altura da fila — senão a sangria,
+                        ao lado do hambúrguer largo, ficava com um retângulo
+                        navy vazio por baixo. A grande leva o que o `row-span-2`
+                        lhe der; a larga do hambúrguer é uma faixa 2:1, senão
+                        uma célula de duas colunas puxava a fila para o dobro.
+                      */}
+                      <div
+                        className={`relative w-full ${
+                          grande
+                            ? "aspect-[16/10] md:aspect-auto md:min-h-0 md:flex-1"
+                            : largo
+                              ? "aspect-[4/3] md:aspect-[2/1]"
+                              : "aspect-[4/3] md:grow"
+                        }`}
+                      >
+                        <Image
+                          src={imagem.src}
+                          alt={texto(imagem.legenda, "pt")}
+                          fill
+                          sizes={
+                            grande || largo
+                              ? "(max-width: 768px) 100vw, 66vw"
+                              : "(max-width: 768px) 50vw, 33vw"
+                          }
+                          style={imagem.foco ? { objectPosition: imagem.foco } : undefined}
+                          className="object-cover"
+                        />
+                        {/*
+                          O preço no canto da fotografia, como nas sobremesas
+                          no telemóvel. A pastilha é opaca: o número lê-se
+                          sobre qualquer foto. Tira ao texto de baixo uma
+                          linha inteira, e é essa linha que a foto ganha.
+                        */}
+                        <span className="tabular absolute top-2 right-2 z-10 rounded-full bg-acento px-2 py-0.5 font-display text-xs font-semibold text-tinta sm:top-3 sm:right-3 sm:px-3 sm:py-1 sm:text-sm">
+                          {"desde" in p && p.desde ? "desde " : ""}
+                          {euros(p.preco)}
+                        </span>
+                      </div>
 
-                    Na célula grande a fotografia ocupa o que sobrar; nas
-                    outras leva altura fixa e não proporção, senão uma célula
-                    de duas colunas puxava a linha inteira para o dobro da
-                    altura e a que está ao lado ficava um retângulo vazio.
-                  */}
-                  {imagem && (
-                    <div className={`relative w-full ${grande ? "flex-1" : "h-44 sm:h-52"}`}>
-                      <Image
-                        src={imagem.src}
-                        alt={texto(imagem.legenda, "pt")}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 66vw"
-                        style={imagem.foco ? { objectPosition: imagem.foco } : undefined}
-                        className="object-cover"
-                      />
-                    </div>
-                  )}
-
-                  {!imagem && grande && (
-                    <RosaDosVentos
-                      className="pointer-events-none absolute -right-12 -bottom-12 h-56 w-56 text-white/10"
-                      aria-hidden
-                    />
-                  )}
-
-                  <div className={imagem ? "p-5 sm:p-7" : "relative"}>
-                    <h3
-                      className={`font-display font-semibold leading-tight ${
-                        grande ? "text-2xl sm:text-3xl" : "text-lg"
-                      }`}
-                    >
-                      {p.nome}
-                    </h3>
-                    <p
-                      className={`mt-2 max-w-[42ch] leading-relaxed ${
-                        imagem ? "text-white/85" : tons[p.tom].corpo
-                      } ${grande ? "text-base" : "text-sm"}`}
-                    >
-                      {p.descricao}
-                    </p>
-                    {imagem && (
-                      <p className="tabular mt-4 font-display text-lg font-semibold">
+                      <div className="p-3 pt-2.5 sm:p-5 sm:pt-4">
+                        <h3
+                          className={`font-display leading-tight font-semibold ${
+                            grande ? "text-[15px] sm:text-2xl" : "text-[15px] sm:text-lg"
+                          }`}
+                        >
+                          {p.nome}
+                        </h3>
+                        <p
+                          className={`mt-1 max-w-[42ch] text-xs leading-snug text-white/80 sm:mt-1.5 sm:leading-relaxed ${
+                            grande ? "sm:text-base" : "sm:text-sm"
+                          }`}
+                        >
+                          {p.descricao}
+                        </p>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      {grande && (
+                        <RosaDosVentos
+                          className="pointer-events-none absolute -right-12 -bottom-12 h-56 w-56 text-white/10"
+                          aria-hidden
+                        />
+                      )}
+                      <div className="relative">
+                        <h3
+                          className={`font-display leading-tight font-semibold ${
+                            grande ? "text-2xl sm:text-3xl" : "text-lg"
+                          }`}
+                        >
+                          {p.nome}
+                        </h3>
+                        <p
+                          className={`mt-2 max-w-[42ch] leading-relaxed ${tons[p.tom].corpo} ${
+                            grande ? "text-base" : "text-sm"
+                          }`}
+                        >
+                          {p.descricao}
+                        </p>
+                      </div>
+                      <p className="tabular relative mt-6 font-display text-lg font-semibold">
                         {"desde" in p && p.desde ? "desde " : ""}
                         {euros(p.preco)}
                       </p>
-                    )}
-                  </div>
-
-                  {/* Sem fotografia o preço fica encostado ao fundo, como sempre esteve. */}
-                  {!imagem && (
-                    <p className="tabular relative mt-6 font-display text-lg font-semibold">
-                      {"desde" in p && p.desde ? "desde " : ""}
-                      {euros(p.preco)}
-                    </p>
+                    </>
                   )}
                 </article>
               </Revelar>

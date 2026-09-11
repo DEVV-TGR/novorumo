@@ -58,14 +58,17 @@ Antes disto ir para o ar há coisas que só a casa pode responder:
 - **Que prato é cada fotografia.** As fotos do Instagram resolveram a falta de
   imagens de comida salgada, mas mostram pratos sem lhes dar nome. Sabe-se que
   aquela é uma francesinha; não se sabe se é a francesinha simples, se a "à
-  Novo Rumo". Por isso as legendas descrevem o prato em vez de o nomear, e só
-  duas células dos destaques levam fotografia — a francesinha e o hambúrguer.
-  A da Pizza Novo Rumo continua pintada com a cor da marca, porque a pizza que
-  há fotografada leva salmão fumado e a da carta leva gambas e atum. Com a
-  casa a confirmar o que é cada uma, as fotos podem também entrar na `/carta`.
-- **Uma fotografia da esplanada fora do São Valentim.** A que o site usa ao pé
-  do mapa é a única que apanha o letreiro da casa, e tem corações na relva
-  artificial.
+  Novo Rumo". Por isso as legendas descrevem o prato em vez de o nomear.
+- **Três fotografias provisórias nos destaques.** Só a francesinha e o
+  hambúrguer estão fotografados. A Pizza Novo Rumo mostra a pizza de salmão
+  fumado (a da carta leva gambas e atum), o pica-pau mostra a travessa de
+  petiscos, e a sangria mostra a esplanada. Estão lá para se ver como a
+  secção fica com fotografia em todas as células, e estão marcadas como
+  `provisoria` em `src/componentes/inicio/Destaques.tsx`. **Pedir à casa uma
+  foto de cada um destes três** e substituir. Enquanto isso, a pizza e a
+  travessa repetem-se na galeria.
+- **Uma fotografia da esplanada fora do São Valentim.** A única que apanha o
+  letreiro da casa tem corações na relva artificial.
 - **Logótipo vetorial original e códigos de cor oficiais.** Os que aqui estão
   foram lidos do PDF e batem certo, mas convém confirmar com quem os desenhou.
 - **Alergénios.** O modelo suporta-os e há alguns preenchidos (2 das 20

@@ -17,7 +17,13 @@ export function Hero() {
   const epoca = epocaDe(new Date());
 
   return (
-    <section className="relative isolate flex min-h-[calc(100dvh-4rem)] items-center overflow-hidden">
+    /*
+      `svh` e não `dvh`. No telemóvel a barra de endereço encolhe quando se
+      começa a rolar, o `dvh` cresce com isso, a secção crescia com ele e a
+      fotografia de fundo re-enquadrava-se a meio do gesto — parecia que o
+      fundo mexia. O `svh` é a altura com a barra à vista e não muda.
+    */
+    <section className="relative isolate flex min-h-[calc(100svh-4rem)] items-center overflow-hidden">
       <Image
         src="/fundos/lowpoly.jpg"
         alt=""

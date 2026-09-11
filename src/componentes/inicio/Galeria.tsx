@@ -27,9 +27,11 @@ import { Revelar } from "../Revelar";
  * como as colunas: com 154 px de largura, o padding de 20 px de cada lado
  * deixava 112 px de texto e a legenda ficava com o dobro da altura da foto.
  *
- * As que faltam estão noutro sítio, e não se repetem: a francesinha e os
- * hambúrgueres nos destaques, a esplanada ao pé do mapa e a sobremesa na
- * secção das sobremesas.
+ * As que faltam estão noutro sítio: a francesinha, os hambúrgueres e a
+ * esplanada nos destaques, a sobremesa na secção das sobremesas. A pizza e a
+ * travessa de petiscos aparecem cá e nos destaques — lá são provisórias, à
+ * espera das fotos certas da casa, e no dia em que essas chegarem a repetição
+ * desaparece.
  */
 const grupos = [
   {

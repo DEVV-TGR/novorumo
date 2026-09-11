@@ -19,7 +19,13 @@ import { Revelar } from "../Revelar";
  * disto era um mosaico em colunas, com cada foto no seu feitio: ficava bonito
  * e lia-se mal, porque nada acabava à mesma altura e não havia por onde
  * começar. Aqui as fotos vêm em dois grupos com título, seis e três, em duas
- * colunas.
+ * colunas — em qualquer largura, telemóvel incluído.
+ *
+ * No telemóvel as duas colunas são o que faz a diferença: numa coluna só, a
+ * 360 px, esta secção media 3686 px, quase seis ecrãs para nove fotografias.
+ * Em duas, com o cartão compacto, mede 1641. O cartão compacto conta tanto
+ * como as colunas: com 154 px de largura, o padding de 20 px de cada lado
+ * deixava 112 px de texto e a legenda ficava com o dobro da altura da foto.
  *
  * As que faltam estão noutro sítio, e não se repetem: a francesinha e os
  * hambúrgueres nos destaques, a esplanada ao pé do mapa e a sobremesa na
@@ -62,7 +68,7 @@ export function Galeria() {
             .filter((f): f is NonNullable<typeof f> => Boolean(f));
 
           return (
-            <div key={grupo.id} className={g === 0 ? "mt-12" : "mt-14"}>
+            <div key={grupo.id} className={g === 0 ? "mt-8 sm:mt-12" : "mt-10 sm:mt-14"}>
               <Revelar>
                 <h3 className="display-3 font-display font-semibold text-marca-viva">
                   {grupo.titulo}
@@ -74,8 +80,12 @@ export function Galeria() {
                 380 px de largura num portátil, e uma travessa de petiscos com
                 doze coisas em cima não se vê a 380 px. Em duas, a mesma foto
                 fica com 590 e passa a distinguir-se o que lá está.
+
+                E duas também no telemóvel, sem `sm:`. O intervalo entre
+                cartões é que encolhe: 20 px roubados a uma coluna de 154 são
+                13% da fotografia.
               */}
-              <div className="mt-6 grid gap-5 sm:grid-cols-2">
+              <div className="mt-6 grid grid-cols-2 gap-3 sm:gap-5">
                 {escolhidas.map((f, i) => {
                   /*
                     Num grupo com um número ímpar de fotografias, a última
@@ -88,7 +98,7 @@ export function Galeria() {
                   <Revelar
                     key={f.id}
                     atraso={(i % 2) * 0.05}
-                    className={`h-full ${largo ? "sm:col-span-2" : ""}`}
+                    className={`h-full ${largo ? "col-span-2" : ""}`}
                   >
                     <figure className="h-full overflow-hidden rounded-[14px] border border-linha bg-cartao">
                       {/*
@@ -105,17 +115,22 @@ export function Galeria() {
                           sizes={
                             largo
                               ? "(max-width: 1200px) 100vw, 72rem"
-                              : "(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 36rem"
+                              : "(max-width: 1200px) 50vw, 36rem"
                           }
                           style={f.foco ? { objectPosition: f.foco } : undefined}
                           className="object-cover"
                         />
                       </div>
-                      <figcaption className="p-5 pt-4">
-                        <h4 className="font-display text-lg font-semibold text-texto">
+                      {/*
+                        No telemóvel a legenda aperta-se: menos padding e letra
+                        mais pequena. Não é para caber mais texto, é para a
+                        fotografia continuar a ser a coisa maior do cartão.
+                      */}
+                      <figcaption className="p-3 pt-2.5 sm:p-5 sm:pt-4">
+                        <h4 className="font-display text-[15px] leading-tight font-semibold text-texto sm:text-lg">
                           {texto(f.titulo, "pt")}
                         </h4>
-                        <p className="mt-1.5 text-sm leading-relaxed text-texto-suave">
+                        <p className="mt-1 text-xs leading-snug text-texto-suave sm:mt-1.5 sm:text-sm sm:leading-relaxed">
                           {texto(f.legenda, "pt")}
                         </p>
                       </figcaption>
@@ -129,7 +144,7 @@ export function Galeria() {
         })}
 
         <Revelar atraso={0.1}>
-          <p className="mt-10 text-sm text-texto-suave">
+          <p className="mt-8 text-sm text-texto-suave sm:mt-10">
             As fotografias são da casa, publicadas no{" "}
             <a
               href={site.redes.instagram}

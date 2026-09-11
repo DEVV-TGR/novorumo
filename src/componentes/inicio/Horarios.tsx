@@ -68,7 +68,7 @@ export function Horarios() {
           </div>
         </Revelar>
 
-        <div className="mt-10 grid gap-8 lg:grid-cols-2 lg:gap-14">
+        <div className="mt-8 grid gap-8 sm:mt-10 lg:grid-cols-2 lg:gap-14">
           <Revelar>
             <div className="rounded-[14px] bg-cartao p-5 sm:p-8">
               <h3 className="font-display text-lg font-semibold text-texto">

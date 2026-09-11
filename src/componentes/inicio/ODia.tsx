@@ -42,7 +42,7 @@ export function ODia() {
           </h2>
         </Revelar>
 
-        <ol className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="mt-10 grid gap-4 sm:mt-14 sm:grid-cols-2 lg:grid-cols-4">
           {momentos.map((m, i) => (
             <Revelar key={m.hora} atraso={i * 0.07} className="h-full">
               <li className="h-full rounded-[14px] border border-linha bg-cartao p-5 sm:p-7">

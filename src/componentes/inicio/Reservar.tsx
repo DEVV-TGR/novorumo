@@ -18,7 +18,7 @@ import { MAX_PESSOAS } from "@/lib/reservas";
  */
 export function Reservar() {
   return (
-    <section id="reservar" className="scroll-mt-20 bg-fundo-alt py-20 sm:py-28">
+    <section id="reservar" className="scroll-mt-20 bg-fundo-alt py-16 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
           <div>

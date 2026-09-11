@@ -83,7 +83,7 @@ export function Destaques() {
           </Link>
         </Revelar>
 
-        <div className="mt-12 grid gap-4 md:grid-cols-3">
+        <div className="mt-8 grid gap-4 sm:mt-12 md:grid-cols-3">
           {pratos.map((p, i) => {
             const imagem = "foto" in p && p.foto ? foto(p.foto) : null;
             const grande = i === 0;

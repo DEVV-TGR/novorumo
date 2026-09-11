@@ -36,7 +36,7 @@ export function Rodape() {
       />
       <div className="absolute inset-0 -z-10 bg-navy/60" aria-hidden />
 
-      <div className="mx-auto max-w-6xl px-4 pt-20 pb-10 sm:px-6 sm:pt-24">
+      <div className="mx-auto max-w-6xl px-4 pt-14 pb-10 sm:px-6 sm:pt-24">
         <div className="grid gap-12 lg:grid-cols-[1fr_1fr_1fr]">
           <div>
             <Lockup className="h-auto w-48 text-white" />

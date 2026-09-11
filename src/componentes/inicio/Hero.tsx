@@ -32,19 +32,27 @@ export function Hero() {
         aria-hidden
       />
 
-      <div className="mx-auto grid w-full max-w-6xl gap-10 px-4 pt-16 pb-16 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-end lg:gap-16">
+      {/*
+        No telemóvel a capa aperta-se para o cartão "Hoje" não ficar todo fora
+        do ecrã: media 834 px contra ecrãs de 640 a 818, e o cartão — se a casa
+        está aberta e até que horas, a coisa mais útil da página — ficava 195 px
+        abaixo da dobra num Android de 360. Só encolhem o padding e as margens;
+        o logótipo fica do tamanho que tem, porque é ele que faz quem conhece a
+        casa reconhecer o site.
+      */}
+      <div className="mx-auto grid w-full max-w-6xl gap-6 px-4 pt-10 pb-8 sm:gap-10 sm:px-6 sm:pt-16 sm:pb-16 lg:grid-cols-[1.15fr_0.85fr] lg:items-end lg:gap-16">
         <div>
           <Lockup className="h-auto w-[min(58vw,15rem)] text-white sm:w-72" />
 
-          <h1 className="display-1 mt-7 max-w-[16ch] font-display font-semibold text-white">
+          <h1 className="display-1 mt-5 max-w-[16ch] font-display font-semibold text-white sm:mt-7">
             Na praia de Labruge desde 2010.
           </h1>
 
-          <p className="mt-5 max-w-[46ch] text-base leading-relaxed text-white/85 sm:text-lg">
+          <p className="mt-3 max-w-[46ch] text-base leading-relaxed text-white/85 sm:mt-5 sm:text-lg">
             Pequeno-almoço às nove, cozinha ao meio-dia, gins ao pôr do sol.
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-3">
+          <div className="mt-6 flex flex-wrap items-center gap-3 sm:mt-8">
             <Link
               href="/carta"
               className="rounded-full bg-white px-7 py-3.5 font-display font-semibold text-navy transition-transform hover:bg-white/90 active:scale-[0.98]"

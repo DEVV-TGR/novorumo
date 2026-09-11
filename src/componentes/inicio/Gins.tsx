@@ -39,7 +39,7 @@ export function Gins() {
             </p>
           </Revelar>
 
-          <ul className="mt-10 grid gap-4 sm:grid-cols-2">
+          <ul className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2">
             {primeiros.map((gin, i) => (
               <Revelar key={gin.id} atraso={i * 0.06} className="h-full">
                 <li className="flex h-full items-start gap-4 rounded-[14px] border border-linha bg-cartao p-4">

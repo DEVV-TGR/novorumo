@@ -68,9 +68,14 @@ Antes disto ir para o ar há coisas que só a casa pode responder:
   artificial.
 - **Logótipo vetorial original e códigos de cor oficiais.** Os que aqui estão
   foram lidos do PDF e batem certo, mas convém confirmar com quem os desenhou.
-- **Alergénios.** O modelo suporta-os e há alguns preenchidos, mas foram
-  inferidos dos ingredientes e não confirmados pela cozinha. Por isso não
-  aparecem no site: em vez disso a carta pede que se avise antes de pedir.
+- **Alergénios.** O modelo suporta-os e há alguns preenchidos (2 das 20
+  sobremesas, por exemplo), mas foram inferidos dos ingredientes e não
+  confirmados pela cozinha. Por isso não aparecem no site: em vez disso a
+  carta pede que se avise antes de pedir. Isto tem uma consequência na página
+  de entrada: no telemóvel, a descrição de cada sobremesa está cortada a três
+  linhas, e o que fica de fora pode ser a Nutella. A mesma frase da carta está
+  por isso no fim dessa grelha. Quando a cozinha confirmar os alergénios,
+  entram como etiqueta em cada cartão e o corte deixa de esconder nada.
 - **Horário de verão.** O de julho e agosto vem da carta de 2024 e do Facebook.
   Confirmar se se mantém.
 - **A morada.** O Restaurantji lista "R. da Marginal 420" e a carta diz 820. O
